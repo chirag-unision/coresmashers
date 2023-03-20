@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { QueSheet } from './QueSheet'
+import QueSheet from './QueSheet'
 
 
 export default class PracticePage extends Component {
