@@ -17,7 +17,7 @@ export default class Homepage extends Component {
                         <Route exact path="/Home" component={()=> <Timeline />} />
                         {/* <Route path="/Home/:userid" component={()=> <ProfileView />} /> */}
                         <Route path="/Home/Profile" component={()=> <Profile />} />
-                        <Route path="/Home/Friends" component={()=> <Friends />} />
+                        <Route path="/Home/Practice" component={()=> <Friends />} />
                         <Route path="/Home/Hooks" component={()=> <Hooks />} />
                         {/* <Route path="/Home/PeopleSearch" component={()=> <PeopleSearch />} /> */}
                     </Switch>

@@ -37,7 +37,7 @@ class Navbar extends Component {
                             <Link className="nav-link" to="/Home/Profile">Profile</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/Home/Friends">Practice</Link>
+                            <Link className="nav-link" to="/Home/Practice">Practice</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/Home/Hooks">Challanges</Link>

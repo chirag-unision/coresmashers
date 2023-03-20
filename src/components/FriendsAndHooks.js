@@ -1,28 +1,53 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import Friendcard from './cards/Friendcard'
 import Hookcard from './cards/Hookcard'
 import loader from '../media/loader.gif'
 import axios from 'axios'
 import Timeline from '@mui/lab/Timeline';
-import TimelineItem from '@mui/lab/TimelineItem';
-import TimelineSeparator from '@mui/lab/TimelineSeparator';
-import TimelineConnector from '@mui/lab/TimelineConnector';
-import TimelineContent from '@mui/lab/TimelineContent';
-import TimelineDot from '@mui/lab/TimelineDot';
 
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import PracticePage from './PracticePage';
 
 export class Friends extends Component {
+    constructor(props) {
+        super(props);
+        this.aptiSet= {
+            "Strength of Materials": "{}", 
+            "Thermodynamics": "{}", 
+            "Hydraulics and Fluid Mechanic": "{}", 
+            "Heat Transfer, Refrigeration and Air Conditioning": "{}"
+            }
+        this.objSet= {
+            "Strength of Materials": "{}", 
+            "Thermodynamics": "{}", 
+            "Hydraulics and Fluid Mechanic": "{}", 
+            "Heat Transfer, Refrigeration and Air Conditioning": "{}"
+            }
+        this.subSet= {
+            "Strength of Materials": "{}", 
+            "Thermodynamics": "{}", 
+            "Hydraulics and Fluid Mechanic": "{}", 
+            "Heat Transfer, Refrigeration and Air Conditioning": "{}"
+            }
+    }
     render() {
         return (
             <div className='d-flex justify-content-around'>
-                <Friendcard title="Aptitute Q's" />
-                <Friendcard title="Technical Objectives" />
-                <Friendcard title="Technical Subjectives" />
+            <Switch>
+                <Route exact path="/Home/Practice/">
+                    <Friendcard title="Aptitute Q's" uri="apti" />
+                    <Friendcard title="Technical Objectives" uri="objective" />
+                    <Friendcard title="Technical Subjectives" uri="subjective" />
+                </Route>
+                <Route path="/Home/Practice/apti" component={()=> <PracticePage data={this.aptiSet} />} />
+                <Route path="/Home/Practice/objective" component={()=> <PracticePage data={this.objSet} />} />
+                <Route path="/Home/Practice/subjective" component={()=> <PracticePage data={this.subSet} />} />
+            </Switch>
             </div>
         )
     }

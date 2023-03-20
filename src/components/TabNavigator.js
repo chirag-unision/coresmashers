@@ -17,7 +17,12 @@ const TabNavigator = ({data}) => {
     return (
         <TabContext value={value}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tabs  variant="scrollable" onChange={handleChange} aria-label="scrollable prevent tabs ">
+                <Tabs
+                  value={value}
+                  onChange={handleChange}
+                  variant="scrollable"
+                  scrollButtons={false}
+                  aria-label="scrollable prevent tabs example">
                     {Object.keys(data).map((key) => {
                         return <Tab label={key} value={key} />
                     })

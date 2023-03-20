@@ -47,9 +47,9 @@ body {
     color: rgb(0, 0, 0);
 }
 .dom-container {
-    width: 90%;
+    width: 95%;
     margin: auto;
-    border: 2px solid rgb(61, 60, 60);
+    border: 2px solid rgb(220, 220, 220);
     border-radius: 20px;
     margin-top: 20px;
 }
@@ -222,7 +222,7 @@ body {
     color: rgb(4, 45, 122)
 }
 .info-col p {
-    font-size: large;
+    font-size: medium;
     margin-bottom: 12px;
 }
 @media all and (max-width: 650px) {

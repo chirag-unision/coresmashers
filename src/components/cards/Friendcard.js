@@ -4,11 +4,13 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export default class Friendcard extends Component {
     render() {
         return (
             <div className="friend-card p-3 m-2 d-flex">
+                <Link className="nav-link" to={'/Home/Practice/'+this.props.uri}>
                 <Card sx={{ maxWidth: 300 }}>
                     <CardActionArea>
                         <CardMedia
@@ -19,7 +21,7 @@ export default class Friendcard extends Component {
                         />
                         <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            Lizard
+                            {this.props.title}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                             Lizards are a widespread group of squamate reptiles, with over 6,000
@@ -28,6 +30,7 @@ export default class Friendcard extends Component {
                         </CardContent>
                     </CardActionArea>
                 </Card>
+                </Link>
             </div>
         )
     }
