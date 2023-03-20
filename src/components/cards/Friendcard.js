@@ -8,7 +8,7 @@ import { CardActionArea } from '@mui/material';
 export default class Friendcard extends Component {
     render() {
         return (
-            <div className="friend-card p-3 m-2">
+            <div className="friend-card p-3 m-2 d-flex">
                 <Card sx={{ maxWidth: 300 }}>
                     <CardActionArea>
                         <CardMedia
