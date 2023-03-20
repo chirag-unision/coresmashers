@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
-import QueSheet from './QueSheet'
+import { QueSheet } from './QueSheet'
 
 
 export default class PracticePage extends Component {
   render() {
     return (
       <div>
-        <QueSheet />
+        <TabNavigator data = {{1:"Chirag",2:"Sourav",3:"Ankan",4:"Aditya"}}/>
+
+        {/*<QueSheet />*/}
       </div>
     )
   }
