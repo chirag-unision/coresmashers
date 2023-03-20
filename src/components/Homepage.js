@@ -19,7 +19,7 @@ export default class Homepage extends Component {
                         <Route path="/Home/Profile" component={()=> <Profile />} />
                         <Route path="/Home/Friends" component={()=> <Friends />} />
                         <Route path="/Home/Hooks" component={()=> <Hooks />} />
-                        <Route path="/Home/PeopleSearch" component={()=> <PeopleSearch />} />
+                        {/* <Route path="/Home/PeopleSearch" component={()=> <PeopleSearch />} /> */}
                     </Switch>
                 </div>
             </div>

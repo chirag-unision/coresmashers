@@ -43,27 +43,27 @@ export class Hooks extends Component {
       this.setState({expanded: (!this.state.expanded ? panel : false)});
     };
   
-    componentDidMount() {
-        const host= window.location.hostname;
-        axios({
-            method: 'post',
-            url: `http://${host}:80/php/addtohooks.php`,
-            data: { user: sessionStorage.getItem('validatedUser') }
-        })
-        .then(result => {
-            console.log(result)
-            if(result.data.status === 100) {
-                this.setState({ Data: result.data.data })
-                this.setState({ loading: false })
-            }
-        })
-        .catch(
-            // error => this.setState({ error: error.message })
-            () => {
-            alert('error')
-            }
-        );
-    }
+    // componentDidMount() {
+    //     const host= window.location.hostname;
+    //     axios({
+    //         method: 'post',
+    //         url: `http://${host}:80/php/addtohooks.php`,
+    //         data: { user: sessionStorage.getItem('validatedUser') }
+    //     })
+    //     .then(result => {
+    //         console.log(result)
+    //         if(result.data.status === 100) {
+    //             this.setState({ Data: result.data.data })
+    //             this.setState({ loading: false })
+    //         }
+    //     })
+    //     .catch(
+    //         // error => this.setState({ error: error.message })
+    //         () => {
+    //         alert('error')
+    //         }
+    //     );
+    // }
     render() {
         return (
             <div>

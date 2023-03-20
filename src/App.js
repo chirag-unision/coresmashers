@@ -4,6 +4,7 @@ import './App.css';
 import './Home.style.css';
 import Login from './components/Login';
 import Home from './components/Homepage';
+import PracticePage from './components/PracticePage';
 
 export default class App extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ export default class App extends Component {
           <Switch>
             <Route exact path="/" component={()=> <Login api={this.api} />} />
             <Route path="/Home" component={()=> <Home />} />
+            <Route path="/Practice" component={()=> <PracticePage />} />
           </Switch>
         </BrowserRouter>
       </div>
