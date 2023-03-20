@@ -230,3 +230,12 @@ body {
       flex-direction: column;
     }
 }
+
+
+
+.snip {
+    background: rgba(0, 119, 255, 0.256);
+    border: none;
+    font-size: x-small;
+    font-weight: 550;
+}

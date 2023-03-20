@@ -10,13 +10,19 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 export class Friends extends Component {
     render() {
         return (
-            <div stylw={{'display': 'flex'}}>
-                <Friendcard />
-                <Friendcard />
-                <Friendcard />
+            <div className='d-flex justify-content-around'>
+                <Friendcard title="Aptitute Q's" />
+                <Friendcard title="Technical Objectives" />
+                <Friendcard title="Technical Subjectives" />
             </div>
         )
     }
@@ -27,67 +33,131 @@ export class Hooks extends Component {
         super(props);
         this.state= {
             loading: false,
-            Data: [1,2,3]
+            Data: [1,2,3],
+            expanded: false
         }
+        this.handleChange= this.handleChange.bind(this);
     }
-    componentDidMount() {
-        const host= window.location.hostname;
-        axios({
-            method: 'post',
-            url: `http://${host}:80/php/addtohooks.php`,
-            data: { user: sessionStorage.getItem('validatedUser') }
-        })
-        .then(result => {
-            console.log(result)
-            if(result.data.status === 100) {
-                this.setState({ Data: result.data.data })
-                this.setState({ loading: false })
-            }
-        })
-        .catch(
-            // error => this.setState({ error: error.message })
-            () => {
-            alert('error')
-            }
-        );
-    }
+  
+    handleChange = (panel) => (event, isExpanded) => {
+      this.setState({expanded: (!this.state.expanded ? panel : false)});
+    };
+  
+    // componentDidMount() {
+    //     const host= window.location.hostname;
+    //     axios({
+    //         method: 'post',
+    //         url: `http://${host}:80/php/addtohooks.php`,
+    //         data: { user: sessionStorage.getItem('validatedUser') }
+    //     })
+    //     .then(result => {
+    //         console.log(result)
+    //         if(result.data.status === 100) {
+    //             this.setState({ Data: result.data.data })
+    //             this.setState({ loading: false })
+    //         }
+    //     })
+    //     .catch(
+    //         // error => this.setState({ error: error.message })
+    //         () => {
+    //         alert('error')
+    //         }
+    //     );
+    // }
     render() {
         return (
             <div>
-                <div className='flex flex-rw w-full'>
-                    <div >
+                <div className='d-flex'>
+                    <div className='' style={{'width':'50%',}}>
                     <Timeline>
                     { this.state.loading && <img style={{width: '40px'}} src={loader} /> }
                     { this.state.Data && this.state.Data.map((element)=> {
-                        return <Hookcard key={1} title={'this is chirag kaushik'} />
+                        return <Hookcard key={1} title={'challange mech #01'} color={'primary'} />
                     })}
                     </Timeline>
                     </div>
-                    <div>
+                    <div className='' style={{'width':'50%'}}>
                     <Timeline>
-                        <TimelineItem>
-                            <TimelineSeparator>
-                            <TimelineDot />
-                            <TimelineConnector />
-                            </TimelineSeparator>
-                            <TimelineContent>Eat</TimelineContent>
-                        </TimelineItem>
-                        <TimelineItem>
-                            <TimelineSeparator>
-                            <TimelineDot />
-                            <TimelineConnector />
-                            </TimelineSeparator>
-                            <TimelineContent>Code</TimelineContent>
-                        </TimelineItem>
-                        <TimelineItem>
-                            <TimelineSeparator>
-                            <TimelineDot />
-                            <TimelineConnector />
-                            </TimelineSeparator>
-                            <TimelineContent>Sleep</TimelineContent>
-                        </TimelineItem>
+                    { this.state.loading && <img style={{width: '40px'}} src={loader} /> }
+                    { this.state.Data && this.state.Data.map((element)=> {
+                        return <Hookcard key={1} title={'challange mech #01'} color={'warning'} />
+                    })}
                     </Timeline>
                     </div>
+                </div>
+                <div>
+                <Accordion expanded={this.state.expanded === 'panel1'} onChange={this.handleChange('panel1')}>
+                    <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                    >
+                    <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                        General settings
+                    </Typography>
+                    <Typography sx={{ color: 'text.secondary' }}>I am an accordion</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                    <Typography>
+                        Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat.
+                        Aliquam eget maximus est, id dignissim quam.
+                    </Typography>
+                    </AccordionDetails>
+                </Accordion>
+                <Accordion expanded={this.state.expanded === 'panel2'} onChange={this.handleChange('panel2')}>
+                    <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel2bh-content"
+                    id="panel2bh-header"
+                    >
+                    <Typography sx={{ width: '33%', flexShrink: 0 }}>Users</Typography>
+                    <Typography sx={{ color: 'text.secondary' }}>
+                        You are currently not an owner
+                    </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                    <Typography>
+                        Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus,
+                        varius pulvinar diam eros in elit. Pellentesque convallis laoreet
+                        laoreet.
+                    </Typography>
+                    </AccordionDetails>
+                </Accordion>
+                <Accordion expanded={this.state.expanded === 'panel3'} onChange={this.handleChange('panel3')}>
+                    <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel3bh-content"
+                    id="panel3bh-header"
+                    >
+                    <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                        Advanced settings
+                    </Typography>
+                    <Typography sx={{ color: 'text.secondary' }}>
+                        Filtering has been entirely disabled for whole web server
+                    </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                    <Typography>
+                        Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit
+                        amet egestas eros, vitae egestas augue. Duis vel est augue.
+                    </Typography>
+                    </AccordionDetails>
+                </Accordion>
+                <Accordion expanded={this.state.expanded === 'panel4'} onChange={this.handleChange('panel4')}>
+                    <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel4bh-content"
+                    id="panel4bh-header"
+                    >
+                    <Typography sx={{ width: '33%', flexShrink: 0 }}>Personal data</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                    <Typography>
+                        Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit
+                        amet egestas eros, vitae egestas augue. Duis vel est augue.
+                    </Typography>
+                    </AccordionDetails>
+                </Accordion>
                 </div>
             </div>
         )
