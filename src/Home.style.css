@@ -54,7 +54,7 @@ body {
     margin-top: 20px;
 }
 .top-col {
-    width: calc(100% -20px);
+    width: calc(100% - 20px);
     display: flex;
     justify-content: flex-end;
     margin: 10px;
