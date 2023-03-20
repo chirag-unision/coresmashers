@@ -54,42 +54,41 @@ export class Hooks extends Component {
     render() {
         return (
             <div>
-                <div>
-                <Timeline>
-                    <TimelineItem>
-                        <TimelineSeparator>
-                        <TimelineDot />
-                        <TimelineConnector />
-                        </TimelineSeparator>
-                        <TimelineContent>Eat</TimelineContent>
-                    </TimelineItem>
-                    <TimelineItem>
-                        <TimelineSeparator>
-                        <TimelineDot />
-                        <TimelineConnector />
-                        </TimelineSeparator>
-                        <TimelineContent>Code</TimelineContent>
-                    </TimelineItem>
-                    <TimelineItem>
-                        <TimelineSeparator>
-                        <TimelineDot />
-                        <TimelineConnector />
-                        </TimelineSeparator>
-                        <TimelineContent>Sleep</TimelineContent>
-                    </TimelineItem>
-                    <TimelineItem>
-                        <TimelineSeparator>
-                        <TimelineDot />
-                        <TimelineConnector />
-                        </TimelineSeparator>
-                        <TimelineContent>Sleep</TimelineContent>
-                    </TimelineItem>
-                </Timeline>
+                <div className='flex flex-rw w-full'>
+                    <div >
+                    <Timeline>
+                    { this.state.loading && <img style={{width: '40px'}} src={loader} /> }
+                    { this.state.Data && this.state.Data.map((element)=> {
+                        return <Hookcard key={1} title={'this is chirag kaushik'} />
+                    })}
+                    </Timeline>
+                    </div>
+                    <div>
+                    <Timeline>
+                        <TimelineItem>
+                            <TimelineSeparator>
+                            <TimelineDot />
+                            <TimelineConnector />
+                            </TimelineSeparator>
+                            <TimelineContent>Eat</TimelineContent>
+                        </TimelineItem>
+                        <TimelineItem>
+                            <TimelineSeparator>
+                            <TimelineDot />
+                            <TimelineConnector />
+                            </TimelineSeparator>
+                            <TimelineContent>Code</TimelineContent>
+                        </TimelineItem>
+                        <TimelineItem>
+                            <TimelineSeparator>
+                            <TimelineDot />
+                            <TimelineConnector />
+                            </TimelineSeparator>
+                            <TimelineContent>Sleep</TimelineContent>
+                        </TimelineItem>
+                    </Timeline>
+                    </div>
                 </div>
-                { this.state.loading && <img style={{width: '40px'}} src={loader} /> }
-                { this.state.Data && this.state.Data.map((element)=> {
-                    return <Hookcard />
-                })}
             </div>
         )
     }
