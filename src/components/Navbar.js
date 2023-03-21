@@ -10,9 +10,9 @@ class Navbar extends Component {
         }
     }
     render() {
-        // if(sessionStorage.getItem('loginStatus') != 100) {
-        //     this.props.history.push('/');
-        // }
+        if(!sessionStorage.getItem('authtoken')) {
+            this.props.history.push('/');
+        }
         // const activeSearch= () => {
         //     this.setState({ searchActive: true });
         //     this.props.history.push('/Home/PeopleSearch');
@@ -24,7 +24,7 @@ class Navbar extends Component {
         return (
             <>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                    <Link className="navbar-brand" href="#">CoreSmashers</Link>
+                    <Link className="navbar-brand" to="/">CoreSmashers</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>

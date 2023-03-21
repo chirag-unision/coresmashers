@@ -7,6 +7,7 @@ import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import RepeatIcon from '@mui/icons-material/Repeat';
 import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
 
 export default class Hookcard extends Component {
     constructor(props) {
@@ -32,7 +33,7 @@ export default class Hookcard extends Component {
             </TimelineSeparator>
             <TimelineContent sx={{ py: '12px', px: 2 }}>
             <Typography variant="h7" component="span">
-                {this.props.title}
+                <Link to="Home/Challange/">{this.props.title}</Link>
             </Typography>
             <Typography><button className='snip'>{this.props.type==1?'Aptitute':'Technical Obj.'}</button></Typography>
             </TimelineContent>

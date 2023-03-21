@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 import Friendcard from './cards/Friendcard'
 import Hookcard from './cards/Hookcard'
 import loader from '../media/loader.gif'
 import axios from 'axios'
 import Timeline from '@mui/lab/Timeline';
 
-import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { CardActionArea } from '@mui/material';
+
 import PracticePage from './PracticePage';
 
 export class Friends extends Component {
     constructor(props) {
         super(props);
         this.aptiSet= {
-            "Strength of Materials": "{}", 
-            "Thermodynamics": "{}", 
-            "Hydraulics and Fluid Mechanic": "{}", 
-            "Heat Transfer, Refrigeration and Air Conditioning": "{}"
+            "Data Interpretation": "{}", 
+            "Inequalities": "{}", 
+            "Arithmetic Aptitude": "{}", 
+            "Number Series": "{}"
             }
         this.objSet= {
             "Strength of Materials": "{}", 
@@ -44,9 +45,9 @@ export class Friends extends Component {
                     <Friendcard title="Technical Objectives" uri="objective" />
                     <Friendcard title="Technical Subjectives" uri="subjective" />
                 </Route>
-                <Route path="/Home/Practice/apti" component={()=> <PracticePage data={this.aptiSet} />} />
-                <Route path="/Home/Practice/objective" component={()=> <PracticePage data={this.objSet} />} />
-                <Route path="/Home/Practice/subjective" component={()=> <PracticePage data={this.subSet} />} />
+                <Route path="/Home/Practice/apti" component={()=> <PracticePage data={this.aptiSet} />} type="apti" />
+                <Route path="/Home/Practice/objective" component={()=> <PracticePage data={this.objSet} />} type="obj" />
+                <Route path="/Home/Practice/subjective" component={()=> <PracticePage data={this.subSet} />} type="sub" />
             </Switch>
             </div>
         )
@@ -58,15 +59,9 @@ export class Hooks extends Component {
         super(props);
         this.state= {
             loading: false,
-            Data: [1,2,3],
-            expanded: false
+            Data: [1,2,3]
         }
-        this.handleChange= this.handleChange.bind(this);
     }
-  
-    handleChange = (panel) => (event, isExpanded) => {
-      this.setState({expanded: (!this.state.expanded ? panel : false)});
-    };
   
     // componentDidMount() {
     //     const host= window.location.hostname;
@@ -92,8 +87,35 @@ export class Hooks extends Component {
     render() {
         return (
             <div>
+                <h5>Ongoing Challenges</h5>
+                <div className='d-flex justify-content-around'>
+                { this.state.loading && <img style={{width: '40px'}} src={loader} /> }
+                    { this.state.Data && this.state.Data.map((element)=> {
+                        return <Link to="/ChallangeLive"><Card sx={{ minWidth: 300 }}>
+                        <CardActionArea>
+                            <CardMedia
+                            component="img"
+                            height="40"
+                            image="https://th.bing.com/th/id/OIP.UdYomSLbUGPN1F8J4wHxRQHaEo?pid=ImgDet&rs=1"
+                            alt="green iguana"
+                            />
+                            <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                {this.props.title}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                <h5>Challenge Fluids #19</h5>
+                                <p>Duration: 60 mins</p>
+                            </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                    </Card></Link>
+                    })}
+                
+                </div>
                 <div className='d-flex'>
                     <div className='' style={{'width':'50%',}}>
+                    <h5>Upcoming Challenges</h5>
                     <Timeline>
                     { this.state.loading && <img style={{width: '40px'}} src={loader} /> }
                     { this.state.Data && this.state.Data.map((element)=> {
@@ -102,6 +124,7 @@ export class Hooks extends Component {
                     </Timeline>
                     </div>
                     <div className='' style={{'width':'50%'}}>
+                    <h5>Past Challenges</h5>
                     <Timeline>
                     { this.state.loading && <img style={{width: '40px'}} src={loader} /> }
                     { this.state.Data && this.state.Data.map((element)=> {
@@ -109,80 +132,6 @@ export class Hooks extends Component {
                     })}
                     </Timeline>
                     </div>
-                </div>
-                <div>
-                <Accordion expanded={this.state.expanded === 'panel1'} onChange={this.handleChange('panel1')}>
-                    <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1bh-content"
-                    id="panel1bh-header"
-                    >
-                    <Typography sx={{ width: '33%', flexShrink: 0 }}>
-                        General settings
-                    </Typography>
-                    <Typography sx={{ color: 'text.secondary' }}>I am an accordion</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                    <Typography>
-                        Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat.
-                        Aliquam eget maximus est, id dignissim quam.
-                    </Typography>
-                    </AccordionDetails>
-                </Accordion>
-                <Accordion expanded={this.state.expanded === 'panel2'} onChange={this.handleChange('panel2')}>
-                    <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel2bh-content"
-                    id="panel2bh-header"
-                    >
-                    <Typography sx={{ width: '33%', flexShrink: 0 }}>Users</Typography>
-                    <Typography sx={{ color: 'text.secondary' }}>
-                        You are currently not an owner
-                    </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                    <Typography>
-                        Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus,
-                        varius pulvinar diam eros in elit. Pellentesque convallis laoreet
-                        laoreet.
-                    </Typography>
-                    </AccordionDetails>
-                </Accordion>
-                <Accordion expanded={this.state.expanded === 'panel3'} onChange={this.handleChange('panel3')}>
-                    <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel3bh-content"
-                    id="panel3bh-header"
-                    >
-                    <Typography sx={{ width: '33%', flexShrink: 0 }}>
-                        Advanced settings
-                    </Typography>
-                    <Typography sx={{ color: 'text.secondary' }}>
-                        Filtering has been entirely disabled for whole web server
-                    </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                    <Typography>
-                        Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit
-                        amet egestas eros, vitae egestas augue. Duis vel est augue.
-                    </Typography>
-                    </AccordionDetails>
-                </Accordion>
-                <Accordion expanded={this.state.expanded === 'panel4'} onChange={this.handleChange('panel4')}>
-                    <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel4bh-content"
-                    id="panel4bh-header"
-                    >
-                    <Typography sx={{ width: '33%', flexShrink: 0 }}>Personal data</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                    <Typography>
-                        Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit
-                        amet egestas eros, vitae egestas augue. Duis vel est augue.
-                    </Typography>
-                    </AccordionDetails>
-                </Accordion>
                 </div>
             </div>
         )

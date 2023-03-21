@@ -1,6 +1,12 @@
-import { Button, ButtonGroup } from '@mui/material'
+import { Alert, AlertTitle, Button, ButtonGroup, Typography } from '@mui/material'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import {
+    CircularProgressbar,
+    CircularProgressbarWithChildren,
+    buildStyles
+} from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 export default class Profile extends Component {
     render() {
@@ -48,6 +54,29 @@ export default class Profile extends Component {
                                 <span>Email Address</span>
                                 <p className={"my-0"}>sharmacj123@gmail.com</p>
                             </div>
+                        </div>
+                    </div>
+                    <div className='w-50 d-flex flex-row justify-content-around align-items-center'>
+                        <div style={{'width': '200px'}} className=' mx-auto my-auto'>
+                            <CircularProgressbarWithChildren value={40} styles={buildStyles({
+                                    pathColor: "orange",
+                                    trailColor: "wheat",
+                                    strokeLinecap: "butt",
+                                    textSize: "16px",
+
+                                })}>
+                                <Typography>1x</Typography>
+                            </CircularProgressbarWithChildren>
+                        </div>
+                        <div style={{'textAlign': 'left'}}>
+                            <Alert severity="success" color="info">
+                            <span>Current Streak Days Count: </span>
+                            <span>13</span>
+                            </Alert>
+                            <Alert severity="info">
+                            <AlertTitle>Remember:</AlertTitle>
+                            Maintain 3x Level Streak to get Workshop Passes.
+                            </Alert>
                         </div>
                     </div>
                 </div>

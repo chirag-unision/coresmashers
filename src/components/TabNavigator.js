@@ -29,11 +29,6 @@ const TabNavigator = ({data}) => {
                     }
                 </Tabs>
             </Box>
-            {
-                Object.keys(data).map((key) => {
-                     return <TabPanel value={key}>{data[key]}</TabPanel>
-                })
-            }
         </TabContext>
     );
 }
